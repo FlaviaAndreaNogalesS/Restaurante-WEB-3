@@ -1,0 +1,32 @@
+{% extends "ordenes/base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="mt-3">Lista de Meseros</h2>
+    <a href="{% url 'mesero_create' %}" class="btn btn-success mb-3">Agregar Mesero</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for mesero in meseros %}
+            <tr>
+                <td>{{ mesero.id }}</td>
+                <td>{{ mesero.nombre }}</td>
+                <td>{{ mesero.apellido }}</td>
+                <td>{{ mesero.telefono }}</td>
+                <td>
+                    <a href="{% url 'mesero_update' mesero.id %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{% url 'mesero_delete' mesero.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

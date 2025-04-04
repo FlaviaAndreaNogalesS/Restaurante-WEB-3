@@ -1,0 +1,30 @@
+{% extends "ordenes/base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="mt-3">Lista de Platos</h2>
+    <a href="{% url 'plato_create' %}" class="btn btn-success mb-3">Agregar Plato</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for plato in platos %}
+            <tr>
+                <td>{{ plato.id }}</td>
+                <td>{{ plato.nombre }}</td>
+                <td>{{ plato.descripcion }}</td>
+                <td>
+                    <a href="{% url 'plato_update' plato.id %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{% url 'plato_delete' plato.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
